@@ -34,7 +34,7 @@ void insert_node(NODE *node)
 }
 
 /* delete the last node from the list */
-void delete_node(void)
+void delete_node_from_rear(void)
 {
 	/* empty list check */
 	if (!head)
@@ -61,6 +61,22 @@ void delete_node(void)
 
 	free(temp->next);
 	temp->next = NULL;
+}
+
+/* delete nodes from the beginning */
+void delete_node_from_front(void)
+{
+	/*  empty list check */
+	if (!head)
+	{
+		printf("\nList is already empty\n");
+		return;
+	}
+
+	NODE *temp = head;
+        head = head->next;
+
+	free(temp);
 }
 
 
@@ -107,7 +123,7 @@ int main(void)
 		break;
 	
 	    case 2:
-		delete_node();
+		delete_node_from_front();
 		break;
 
 	    case 3:
